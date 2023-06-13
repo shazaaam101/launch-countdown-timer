@@ -1,0 +1,113 @@
+.Time .card {
+  position: relative;
+  --_mobile-width: 150px;
+  --_mobile-font: 2em;
+  width: 200px;
+  aspect-ratio: 1;
+  perspective: 1000px;
+}
+
+.Time .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.Time .card.flip .card-inner {
+  animation: flip .5s forwards alternate;
+
+}
+
+.Time .card.flip .bottom-number {
+  animation: flip-number .25s forwards alternate;
+}
+
+.Time .top, .bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  
+}
+
+.Time .top {
+  height: 50%;
+  background-color: var(--neutral-desaturated-blue);
+  color: var(--primary-soft-red);
+  overflow: hidden;
+  
+}
+
+.Time .bottom {
+  height: 50%;
+  background-color: var(--neutral-desaturated-blue);
+  color: var(--primary-soft-red);
+  overflow: hidden;
+  filter: brightness(0.8);
+  transform: rotateX(180deg);
+}
+
+.Time .top-number {
+  display: block;
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%) rotateX(180deg);
+ 
+}
+
+.Time .bottom-number {
+  position: absolute;
+  top: 0%;
+  transform: translateY(-50%) rotateX(180deg);
+  font-size: clamp(1em, 1em + 5vw, var(--font-time));
+}
+
+.Time .time {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background-color: var(--neutral-desaturated-blue);
+  color: var(--primary-soft-red);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  font-size: clamp(1em, 1em + 5vw, var(--font-time));
+}
+
+.Time .label {
+    margin-top: 2em;
+    letter-spacing: 3px;
+    color: var(--primary-grayish-blue);
+}
+
+@media screen and (max-width:1000px) {
+    .Time .card {
+        width: var(--_mobile-width);
+
+    }
+
+    .Time .bottom-number, .Time .time {
+        font-size: var(--_mobile-font);
+    }
+}
+
+@media screen and (max-width:700px) {
+    .Time .card {
+        width: 60px;
+    }
+
+    .Time .bottom-number, .Time .time {
+        font-size: 1em;
+    }
+    .Time .label {
+        font-size: .5em;
+    }
+}
